@@ -9,7 +9,7 @@ function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => { // Only occurs once
     const loadPopularMovies = async () => {
       try {
         const popularMovies = await getPopularMovies();
@@ -26,9 +26,9 @@ function Home() {
   }, []);
 
   const handleSearch = async (e) => {
-    e.preventDefault();
-    if (!searchQuery.trim()) return;
-    if (loading) return;
+    e.preventDefault(); // Prevents page refresh
+    if (!searchQuery.trim()) return; // Prevents empty searches
+    if (loading) return; // Prevents spam clicking
     setLoading(true);
     try {
       const searchResults = await searchMovies(searchQuery);
